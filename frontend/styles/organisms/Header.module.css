@@ -1,0 +1,24 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 120px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 30px;
+  background-color: white;
+  box-shadow: -3px 0px 8px black;
+}
+
+.img {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 9999px;
+  cursor: pointer;
+  -webkit-user-drag: none;
+}

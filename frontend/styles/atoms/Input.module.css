@@ -1,0 +1,12 @@
+.input {
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input_large {
+  font-size: 2.1rem;
+  width: 600px;
+}
