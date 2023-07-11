@@ -1,43 +1,38 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 
 type TestProps = {
-  selectedMember: number | undefined
-}
-
-type Data = {
-  id: number,
-  name: string,
-  goal: string
+  selectedMember: number | undefined,
+  memberData: any,
+  goal: any
 }
 
 const Main = (props: TestProps): JSX.Element => {
-  const {selectedMember} = props;
-  const [memberData, setMemberData] = useState<Data>();
-  const [goal, setGoal] = useState<string>("");
-
-
+  const {selectedMember, memberData, goal} = props;
+  
   useEffect(() => {
-    axios.get(`http://localhost:8080/members/${selectedMember!+1}`).then((res) => {
-      setMemberData(res.data);
-    }).catch();
-  }, [selectedMember]);
+    goal.current = memberData?.goal!;
+  }, [memberData])
 
   const saveGoal = () => {
-    memberData!.goal = goal;
+    memberData!.goal = goal.current;
     axios.patch(`http://localhost:8080/members/${memberData?.id}`, memberData).then((res) => {
-
+      console.log(res);
     }).catch();
+  }
+
+  const onChangeGoal = (event: ChangeEvent<HTMLInputElement>): void => {
+    goal.current = event.target.value;
+    console.log(goal.current)
   }
 
   return (
     <div>
       <h1>目標</h1>
-      <Input style="large" value={goal} />
+      <Input style="large" value={goal.current} onChange={onChangeGoal} />
       <Button onClick={() => saveGoal()}/>
-      {memberData && memberData.name}
     </div>
   )
 }
