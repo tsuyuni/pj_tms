@@ -1,0 +1,10 @@
+.block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.heading {
+  font-size: 1.8rem;
+  cursor: default;
+}

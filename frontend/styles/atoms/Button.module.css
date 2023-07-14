@@ -6,3 +6,8 @@
   color: white;
   cursor: pointer;
 }
+
+.button_disabled {
+  background-color: gray;
+  cursor: default;
+}

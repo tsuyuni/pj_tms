@@ -2,6 +2,7 @@ import axios from "axios";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
+import DailyDone from "./DailyDone";
 
 type TestProps = {
   selectedMember: number | undefined,
@@ -11,6 +12,7 @@ type TestProps = {
 
 const Main = (props: TestProps): JSX.Element => {
   const {selectedMember, memberData, goal} = props;
+  const dates = ["7月20日", "7月27日", "8月3日", "8月10日"];
   
   useEffect(() => {
     goal.current = memberData?.goal!;
@@ -33,6 +35,13 @@ const Main = (props: TestProps): JSX.Element => {
       <h1>目標</h1>
       <Input style="large" value={goal.current} onChange={onChangeGoal} />
       <Button onClick={() => saveGoal()}/>
+      {
+      dates.map((date: string) => {
+        return (
+          <DailyDone date={date} />
+        )
+      })
+    }
     </div>
   )
 }

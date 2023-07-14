@@ -1,0 +1,13 @@
+.summary {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.details_inner {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-left: 20px;
+}

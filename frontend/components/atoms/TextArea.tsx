@@ -2,11 +2,10 @@ import { useRef } from "react";
 import styles from "../../styles/atoms/TextArea.module.css";
 
 type TextAreaProps = {
-  title?: string
+  value?: string
 }
 
 const TextArea = (props: TextAreaProps): JSX.Element => {
-  const {title} = props;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const onChange = () => {
@@ -15,10 +14,7 @@ const TextArea = (props: TextAreaProps): JSX.Element => {
   }
 
   return (
-    <>
-      <h2>{title}</h2>
-      <textarea className={styles.textarea} onChange={onChange} ref={textareaRef} />
-    </>
+    <textarea className={styles.textarea} onChange={onChange} ref={textareaRef} />
   )
 }
 

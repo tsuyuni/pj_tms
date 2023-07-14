@@ -8,4 +8,12 @@ class MentorsController < ApplicationController
     mentor = Mentor.find(params[:id])
     render status: 200, json: mentor
   end
+
+  def update
+    mentor = Mentor.find(params[:id])
+    mentor.update({
+      name: params[:name]
+    })
+    render status: 200, json: mentor
+  end
 end
