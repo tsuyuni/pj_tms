@@ -11,10 +11,12 @@ class MembersController < ApplicationController
 
   def update
     member = Member.find(params[:id])
-    member.update({
-      name: params[:name],
-      goal: params[:goal]
-    })
+    member.update(member_params)
     render status: 200, json: member
   end
+
+  private
+    def member_params
+      params.require(:member).permit(:name, :goal, :reflection)
+    end
 end

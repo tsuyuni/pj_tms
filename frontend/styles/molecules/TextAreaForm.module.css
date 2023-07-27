@@ -5,6 +5,11 @@
   gap: 10px;
 }
 
+.heading {
+  font-size: 1.2rem;
+  cursor: default;
+}
+
 .block_inner {
   display: flex;
   align-items: flex-end;

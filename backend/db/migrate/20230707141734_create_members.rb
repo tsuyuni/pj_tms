@@ -4,7 +4,7 @@ class CreateMembers < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :img
       t.string :goal
-      t.integer :mentor_id
+      t.string :reflection
       t.timestamps
     end
   end

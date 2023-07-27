@@ -1,17 +1,14 @@
-import axios from "axios";
-import styles from "../../styles/molecules/Form.module.css";
+import styles from "../../styles/molecules/InputForm.module.css";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
-import { useEffect } from "react";
 
-type GoalProps = {
+type InputFormProps = {
   value: string,
   onChangeInput: any,
-  onClickButton: any,
-  type: "input" | "textarea"
+  onClickButton: any
 }
 
-const Goal = (props: GoalProps): JSX.Element => {
+const InputForm = (props: InputFormProps): JSX.Element => {
   const {value, onChangeInput, onClickButton} = props;
 
   return (
@@ -23,4 +20,4 @@ const Goal = (props: GoalProps): JSX.Element => {
   )
 }
 
-export default Goal;
+export default InputForm;

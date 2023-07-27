@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_104622) do
     t.string "name"
     t.string "img"
     t.string "goal"
-    t.integer "mentor_id"
+    t.string "reflection"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

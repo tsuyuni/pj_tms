@@ -1,37 +1,50 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
+import styles from "../styles/test.module.css";
 import axios from "axios";
-import Form from "../components/molecules/Form";
-
-type MemberData = {
-  name: string,
-  img: string,
-  goal: string,
-  mentor_id: number
-}
 
 const test = (): JSX.Element => {
-  const [memberData, setMemberData] = useState<MemberData>();
 
-  useEffect(() => {
-    axios.get("http://localhost:8080/members/1").then((res) => {
-      setMemberData(res.data);
-    });
-  }, [])
-
-  const onChangeInput = (event: ChangeEvent<HTMLInputElement>): void => {
-    setMemberData({...memberData!, goal: event.target.value})
-  }
-
-  const SaveData = () => {
-    axios.patch("http://localhost:8080/members/1", memberData).then((res) => {
-      console.log(res.data);
-    });
-  }
+  axios.patch("http://localhost:8080/members/1", {
+    reflection: JSON.stringify([{
+      date: "7月19日",
+      fun: "",
+      done: "",
+      learn: ""
+    }, {
+      date: "7月26日",
+      fun: "",
+      done: "",
+      learn: ""
+    }, {
+      date: "8月2日",
+      fun: "",
+      done: "",
+      learn: ""
+    }, {
+      date: "8月30日",
+      fun: "",
+      done: "",
+      learn: ""
+    }, {
+      date: "9月6日",
+      fun: "",
+      done: "",
+      learn: ""
+    }, {
+      date: "9月13日",
+      fun: "",
+      done: "",
+      learn: ""
+    }, {
+      date: "9月20日",
+      fun: "",
+      done: "",
+      learn: ""
+    }])
+  })
 
   return (
-    <>
-    <Form value={memberData! && memberData.goal} onClickButton={SaveData} onChangeInput={onChangeInput} type="input"/>
-    </>
+    <></>
   );
 }
 
