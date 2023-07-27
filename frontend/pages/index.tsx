@@ -30,14 +30,15 @@ const index = (): JSX.Element => {
   useEffect(() => {
     {selectedMember! &&
       axios.get(`http://localhost:8080/members/${selectedMember}`).then((res) => {
-        setMemberData({...res.data, reflection: JSON.parse(res.data.reflection)});
+        if (res.data.reflection){
+          setMemberData({...res.data, reflection: JSON.parse(res.data.reflection)});
+        } else {
+          setMemberData({...res.data, reflection: JSON.parse('[{\"date\":\"7月19日\",\"fun\":\"\",\"done\":\"\",\"learn\":\"\"},{\"date\":\"7月26日\",\"fun\":\"\",\"done\":\"\",\"learn\":\"\"},{\"date\":\"8月2日\",\"fun\":\"\",\"done\":\"\",\"learn\":\"\"},{\"date\":\"8月30日\",\"fun\":\"\",\"done\":\"\",\"learn\":\"\"},{\"date\":\"9月6日\",\"fun\":\"\",\"done\":\"\",\"learn\":\"\"},{\"date\":\"9月13日\",\"fun\":\"\",\"done\":\"\",\"learn\":\"\"},{\"date\":\"9月20日\",\"fun\":\"\",\"done\":\"\",\"learn\":\"\"}]')});
+        }
+        
       });
     }
   }, [selectedMember]);
-
-  useEffect(() => {
-    console.log(memberData?.reflection);
-  }, [memberData])
 
   const onChangeGoal = (event: ChangeEvent<HTMLInputElement>): void => {
     setMemberData({...memberData!, goal: event.target.value});
@@ -66,12 +67,18 @@ const index = (): JSX.Element => {
         title={"Fun"} />
         <TextAreaForm
         value={value.done}
-        onChange={(event) => {memberData.reflection[index].done = event.target.value}}
+        onChange={(event) => {
+          memberData.reflection[index] = {...memberData.reflection[index], done: event.target.value};
+          setMemberData({...memberData});
+        }}
         onClickButton={SaveData}
         title={"Done"} />
         <TextAreaForm
         value={value.learn}
-        onChange={(event) => {memberData.reflection[index].learn = event.target.value}}
+        onChange={(event) => {
+          memberData.reflection[index] = {...memberData.reflection[index], learn: event.target.value};
+          setMemberData({...memberData});
+        }}
         onClickButton={SaveData}
         title={"Learn"} />
         </>
