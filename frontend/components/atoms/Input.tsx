@@ -2,9 +2,9 @@ import { ChangeEvent, MutableRefObject, useRef, useState } from "react";
 import styles from "../../styles/atoms/Input.module.css";
 
 type InputProps = {
-  style: "large",
+  style: "large" | "medium",
   value: string,
-  onChange: any,
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void,
   placeholder?: string
 }
 
